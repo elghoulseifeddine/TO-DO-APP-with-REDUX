@@ -13,10 +13,9 @@ import EditTask from "../EditTask/EditTask";
 
 const Task = ({ task: { title, description, id, isDone } }) => {
   const dispatch = useDispatch();
-  const [colorChange, setColorChange] = useState(true);
+ 
   const styleHandle = () => {
     dispatch(changeIsDone(id));
-    setColorChange(!colorChange);
   };
   return (
     <div>
@@ -37,7 +36,7 @@ const Task = ({ task: { title, description, id, isDone } }) => {
           <Card.Text>{description}</Card.Text>
         </Card.Body>
         <div className="icons">
-          {colorChange ? (
+          {!isDone ? (
             <IoMdCheckmark onClick={() => styleHandle()} />
           ) : (
             <IoIosCheckmarkCircle onClick={() => styleHandle()} />
